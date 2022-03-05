@@ -2,19 +2,23 @@ from ip import Ip
 
 class Router:
     
+    Num = 0
     def __init__(self, L):
-        self.num += 1
-        self.L = L
-        self.name = "Rt" + num
+        Routeur.Num += 1
+        self.interfaces = list(L)
+        self.name = f"Rt{Routeur.Num}"
+        self.neighborns = {}
+        for n in range(len(self.interface)):
+            self.neighborns['int'+str(n)] = {'state':False, 'name':None, 'cost'0}
     
     def addInterface(self, ip):
-        R1.addInterfarce([Ip("195.134.50.13/24")])
-        self.name.append([Ip(ip)])
+        self.interface.append(ip)
+        self.neighborns['int'+str(len(self.interface)-1)] = {'state':False, 'name':None, 'cost'0}
         
+       
     def getIpByInterface(self, name):
-        pass
+        return self.interface[int(name.split('int-')[-1])]
     
     def removeInterface(self, ip):
-        R1.removeInterfarce("132.154.40.1")
-    
-R1 = Routeur([Ip("10.53.1.2/8"), Ip("132.154.40.1/16")])
+        self.interface.remove(ip)
+        self.neighborns.pop()
